@@ -52,7 +52,7 @@ Estructura del Switch
 
 switch (valor) {
     case valor1:
-        codigo a ejecutar cuando el valor coincide con el valor2
+        codigo a ejecutar cuando el valor coincide con el valor1
         break;
 
 

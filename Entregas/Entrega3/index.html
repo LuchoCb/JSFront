@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2/dist/sweetalert2.all.min.js"></script>
+   <!--  <script src="https://cdn.jsdelivr.net/npm/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ -->    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="./qrcode.min.js"></script>
+
     <title>Entrega 3 JS | Coder</title>
 </head>
 <body>
@@ -20,13 +25,15 @@
 
     <nav id="NavResumen" class="NavResumen">
         
+
     </nav>
 
     <section class="Box" id="Box">
         <img src="https://cdn-icons-png.flaticon.com/128/1950/1950283.png" alt="" id="ImgBox">
         <br>
-        <button type="button" id="CloseButton">Cerrar Caja</button>
-        <img alt="Código QR" id="codigo">
+        <a class="btn btn-success" tabindex="0" title="QR Code" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-url="https://www.gloomycorner.com">Popover QR Code</a>
+        <div id="qrcode" style="display: none; width: auto; height: auto; padding: 15px;"></div>
+    
     </section>
 
     <br>

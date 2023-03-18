@@ -4,13 +4,25 @@ let box = [];
 
 // Creando el QR para generar producto
 
-new QRious({
-    element: document.querySelector("#codigo"),
-    value: "https://parzibyte.me/blog", // La URL o el texto
-    size: 200,
-    backgroundAlpha: 0, // 0 para fondo transparente
-    foreground: "#8bc34a", // Color del QR
-    level: "H", // Puede ser L,M,Q y H (L es el de menor nivel, H el mayor)
+/* let qrcode = new QRCode(document.getElementById("qrcode"), {
+  width : 120,
+  height : 120
+}); */
+function makeQrcode(e) {
+qrcode.makeCode(e.attr("data-url"));
+}
+jQuery(document).ready(function(){
+jQuery("[data-toggle='popover']").popover(
+  options={
+      content: jQuery("#qrcode"),
+      html: true // important! popover html content (tag: "#qrcode") which contains an image
+  }
+);
+
+jQuery("[data-toggle='popover']").on("show.bs.popover", function(e) {
+  makeQrcode(jQuery(this));
+  jQuery("#qrcode").show();
+});
 });
 
 // Usuario ingresa artículo y se ingresa a la caja.

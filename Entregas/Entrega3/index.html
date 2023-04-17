@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--  <script src="https://cdn.jsdelivr.net/npm/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
- -->    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="./qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <title>Entrega 3 JS | Coder</title>
 </head>
@@ -31,9 +31,6 @@
     <section class="Box" id="Box">
         <img src="https://cdn-icons-png.flaticon.com/128/1950/1950283.png" alt="" id="ImgBox">
         <br>
-        <a class="btn btn-success" tabindex="0" title="QR Code" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-url="https://www.gloomycorner.com">Popover QR Code</a>
-        <div id="qrcode" style="display: none; width: auto; height: auto; padding: 15px;"></div>
-    
     </section>
 
     <br>
@@ -41,7 +38,8 @@
     <section class="ProductSearch" id="ProductSearch">
 
         <input type="text" name="" id="SearchBox" placeholder="Ingresa el producto para meter en la caja">
-        <button type="button" id="AddButton">Agregar Producto</button>
+        <button type="button" id="AddButton" class="btn btn-outline-secondary" >Agregar Producto</button>
+        <button type="button" id="CloseButton" class="btn btn-dark" >Cerrar caja</button>
 
 
     </section>
@@ -50,8 +48,12 @@
         <h1>Productos más usados</h1>
 
     </section>
-    
 
+    <div class="container">
+        <a tabindex="0" role="button" class="btn btn-light" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="QR Code" data-url="https://www.gloomycorner.com">Popover QR Code</a>
+        <div id="qrcode" style="display:none; width:auto; height:auto;padding:15px;"></div>
+    </div>
+    
 
     <script src="main.js"></script>
 </body>

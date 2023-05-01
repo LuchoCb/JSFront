@@ -1,11 +1,13 @@
-// CREANDO LAS CAJAS PARA ALMACENAR LOS PRODUCTOS.
+// CREANDOlos array para almacenar cajas y productos .
 
 let box = [];
+let boxClose = [];
+
 
 // Creando el QR para generar producto
 
 
-let qrcode = new QRCode(document.getElementById("qrcode"), {
+/* let qrcode = new QRCode(document.getElementById("qrcode"), {
   width : 120,
   height : 120
 });
@@ -24,51 +26,60 @@ jQuery(document).ready(function(){
         makeQrcode(jQuery(this));
         jQuery("#qrcode").show();
     });
-});
-
-// Conectando el botón
-
-let closeButton = document.getElementById("CloseButton");
-closeButton.addEventListener("click", ()=> {
-  Swal.fire({
-    icon: 'success',
-    title: 'Caja Cerrada',
-    text: '¡Productos agregados con éxito!',
-  })  
-      }); 
+});  */
 
 // Usuario ingresa artículo y se ingresa a la caja.
 
 let userProduct = document.getElementById("AddButton");
 userProduct.addEventListener("click", ()=> { // Función para agregar y mostrar los productos en la caja
-  let input = document.getElementById("SearchBox");
-  let valor = input.value
-  document.getElementById("SearchBox").value = "";
+  const nombre = document.getElementById('SearchBox').value;
+  document.getElementById('SearchBox').value = "";
+  box.push({nombre: nombre});  // Agrega un objeto con el nombre ingresado por el usuario
+  alert("articulo agregado a la caja");
+  console.log(` Articulos en caja : ${box.length} `);
+  console.log(box);            // Muestra el array con los elementos ingresados por el usuario
 
-// Producto vacío para almacenar objetos ingresados.
-class Product {
-  constructor(info) {
-    this.nombre = info.nombre;
+});
+
+let cajaCerrada = document.getElementById("CloseButton");
+cajaCerrada.addEventListener("click", ()=> { // Función para cerrar la caja y abrir una nueva
+  Swal.fire({
+    icon: 'success',
+    title: 'Caja Cerrada',
+    text: '¡Productos agregados con éxito!',
+  })  
+  boxClose.push(box);   // Agrega el array box al array boxClose
+  box = [];               // Crea un nuevo array box vacío
+  console.log(boxClose);        // Muestra el array con las cajas cerradas en la consola
+})
+
+function mostrarArrays() {
+  // Limpia la lista antes de agregar nuevos elementos
+  lista.innerHTML = "";
+  
+  // Recorre el array final y crea un elemento li por cada array
+  for (let i = 0; i < boxClose.length; i++) {
+    const arrayLi = document.createElement("li");
+    arrayLi.textContent = JSON.stringify("Caja " + i + "=") /*PLANTILLA LITERAL ppt12*/ + JSON.stringify(boxClose[i]);
+    lista.appendChild(arrayLi);
   }
 }
 
-// creando el nuevo producto.
 
-const productnew = new Product({
-  nombre: userProduct,
-});
+// Botón para ver el listado de cajas y los productos que tienen dentro. 
 
-// Creando condoicional para incluir objetos en la caja
-
-  if (userProduct) {
-    box.push(valor);
-    alert(
-      "articulo agregado a tu caja"
-    ); /* ------> Usar librería para el alert <---------- */
-    console.log(` Articulos en caja : ${box.length} `);
-    console.log (box);
+function generarQR() {
+  // Limpia el div de los códigos QR antes de agregar nuevos elementos
+  const qrDiv = document.getElementById("qr");
+  qrDiv.innerHTML = "";
+  
+  // Recorre el array final con todas las cajas y genera un código QR por cada array
+  
+  for (let i = 0; i < boxClose.length; i++) {
+    const qrCanvas = document.createElement("canvas");
+    new QRCode(qrCanvas, JSON.stringify(boxClose[i])); // Genera el código QR con QRCode.js
+    qrDiv.appendChild(qrCanvas); // Agrega el canvas al div
   }
+}
 
-
-});
 

@@ -1,14 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+      integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+      integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <title>Entrega 3 JS | Coder</title>
+  </head>
+  <body>
+    <header>
+      <h1>MoveApp</h1>
+      <h2>
+        Ingresa los productos, llena tus cajas y genera QR para saber qué hay en
+        cada una
+      </h2>
+      <h3>Controla cuantas Cajas te llevas y cuantas llegan</h3>
+      <h4>El control de tu mudanza en tus manos.</h4>
+    </header>
+
+    <nav id="NavResumen" class="NavResumen"></nav>
+
+    <section class="Box" id="Box">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/1950/1950283.png"
+        alt=""
+        id="ImgBox"
+      />
+      <br />
+    </section>
+
+    <br />
+
+    <section class="ProductSearch" id="ProductSearch">
+      <input
+        type="text"
+        name=""
+        id="SearchBox"
+        placeholder="Ingresa el producto para meter en la caja"
+      />
+      <button type="button" id="AddButton" class="btn btn-outline-secondary">
+        Agregar Producto
+      </button>
+      <button type="button" id="CloseButton" class="btn btn-dark">
+        Cerrar caja
+      </button>
+      <button type="button" id="myBoxes" class="btn btn-dark" onclick="mostrarArrays()">Mis cajas</button>
+     
+    </section>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

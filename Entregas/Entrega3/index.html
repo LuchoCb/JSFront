@@ -61,11 +61,12 @@
         type="text"
         name=""
         id="SearchBox"
-        placeholder="Ingresa el producto para meter en la caja"
+        placeholder="Ingresa el producto"
       />
       <button type="button" id="AddButton" class="btn btn-outline-secondary">
         Agregar Producto
       </button>
+      <br>   
       <button type="button" id="CloseButton" class="btn btn-dark">
         Cerrar caja
       </button>
@@ -73,12 +74,14 @@
       <button type="button" id="QR" class="btn btn-dark" onclick="generarQR()">Generar QR</button>
     </section>
 
+    <ul id="lista"></ul>
+
     <section class="product" id="product">
       <h1>Productos más usados</h1>
     </section>
 
     <div class="container">
-      <ul id="lista"></ul>
+      
 
       <div id="qr"></div>
       <a

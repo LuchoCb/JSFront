@@ -5,11 +5,11 @@ let boxClose = [];
 
 // Usuario ingresa artículo y se ingresa a la caja.
 
-let userProduct = document.getElementById("AddButton");
+let userProduct = document.querySelector("#AddButton");
 userProduct.addEventListener("click", () => {
   // Función para agregar y mostrar los productos en la caja
-  const nombre = document.getElementById("SearchBox").value;
-  document.getElementById("SearchBox").value = "";
+  const nombre = document.querySelector("#SearchBox").value;
+  document.querySelector("#SearchBox").value = "";
   box.push({ nombre: nombre }); // Agrega un objeto con el nombre ingresado por el usuario
   // Buscar el objeto en cada array almacenado en boxClose
   for (let i = 0; i < boxClose.length; i++) {
@@ -26,10 +26,10 @@ userProduct.addEventListener("click", () => {
   console.log(box); // Muestra el array con los elementos ingresados por el usuario
 });
 
-let cajaCerrada = document.getElementById("CloseButton");
+let cajaCerrada = document.querySelector("#CloseButton");
 cajaCerrada.addEventListener("click", () => {
-  const nombre = document.getElementById("SearchBox").value;
-  document.getElementById("SearchBox").value = "";
+  const nombre = document.querySelector("#SearchBox").value;
+  document.querySelector("#SearchBox").value = "";
   Swal.fire({
     icon: "success",
     title: "Caja Cerrada",

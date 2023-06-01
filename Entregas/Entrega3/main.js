@@ -51,41 +51,27 @@ cajaCerrada.addEventListener("click", ()=> { // Función para cerrar la caja y a
   boxClose.push(box);   // Agrega el array box al array boxClose
   box = [];               // Crea un nuevo array box vacío
   console.log(boxClose);// Muestra el array con las cajas cerradas en la consola
-  boxClose.forEach(element => {
-    for (let i = 0; i < boxClose.length; i++) {
-      localStorage.setItem ("Caja" + (i+1), JSON.stringify(element))
-      const productsLS = JSON.parse (localStorage.getItem ("Caja" + (i+1)))
-      console.log (productsLS)
+  let i = boxClose.length  
+  localStorage.setItem ("Caja", JSON.stringify(boxClose))
       
-      }
-
-  
-
-  });
-
 })
 
 function mostrarArrays() {
   // Limpia la lista antes de agregar nuevos elementos
-  lista= document.querySelector ("#lista")
+  let lista = document.querySelector ("#lista")
   lista.innerHTML = "";
   
+  const productsLS = JSON.parse (localStorage.getItem ("Caja"));
+      console.log (productsLS)
   // Recorre el array final y crea un elemento li por cada array
-   
-  for (let i = 0; i < boxClose.length; i++) {
+  productsLS.forEach(producto => {
     const arrayLi = document.createElement("li");
-    //arrayLi.textContent = JSON.parse (localStorage.getItem ("Caja"))
-    //arrayLi.textContent = JSON.stringify("Caja " + (i+1) + "=") /*PLANTILLA LITERAL ppt12*/ + JSON.stringify(boxClose[i]);
-    lista.appendChild(arrayLi);
-    
-  }
+    arrayLi.innerText = producto[0]?.nombre;
+    lista.append(arrayLi);
+  });
+
 }
-
-
-
-
-
-// Botón para ver el listado de cajas y los productos que tienen dentro. 
+ 
 
 function generarQR() {
   // Limpia el div de los códigos QR antes de agregar nuevos elementos

@@ -2,6 +2,8 @@
 
 let box = [];
 let boxClose = [];
+let lista = document.querySelector ("#lista")
+lista.innerHTML = "";
 
 
 // Creando el QR para generar producto
@@ -58,19 +60,28 @@ cajaCerrada.addEventListener("click", ()=> { // Función para cerrar la caja y a
 
 function mostrarArrays() {
   // Limpia la lista antes de agregar nuevos elementos
-  let lista = document.querySelector ("#lista")
-  lista.innerHTML = "";
+
   
   const productsLS = JSON.parse (localStorage.getItem ("Caja"));
       console.log (productsLS)
+      console.log(productsLS[1][0].nombre);
   // Recorre el array final y crea un elemento li por cada array
-  productsLS.forEach(producto => {
-    const arrayLi = document.createElement("li");
-    arrayLi.innerText = producto[0]?.nombre;
+  
+    for(let i = 0; i < productsLS.length; i++) {
+      for(let j = 0; j < productsLS[i].length; j++) {
+        const arrayLi = document.createElement("li");
+    arrayLi.innerHTML = "Caja " + [i] + " " + productsLS[i][j].nombre;
     lista.append(arrayLi);
-  });
-
+        
+        // Acá trabajas con los elementos de tu array interno
+        
+    }
+  
+  };
 }
+
+
+
  
 
 function generarQR() {

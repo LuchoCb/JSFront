@@ -64,9 +64,9 @@ function mostrarArrays() {
   
   const productsLS = JSON.parse (localStorage.getItem ("Caja"));
       console.log (productsLS)
-      //console.log(productsLS[1][0].nombre);
+      console.log(productsLS[1][0].nombre);
   
-    for(let i = 0; i < productsLS.length; i++) {
+     for(let i = 0; i < productsLS.length; i++) {
        for(let j = 0; j < productsLS[i].length; j++) {
        const arrayLi = document.createElement("li");
     arrayLi.innerHTML = "Caja " + [i] + " " + productsLS[i][j].nombre;
@@ -75,11 +75,13 @@ function mostrarArrays() {
     console.log (productsLS.length)
         
         // Acá trabajas con los elementos de tu array interno
+  }
+  } ;
 
-    }
-  
-  };
+
+
 }
+
 
 
 

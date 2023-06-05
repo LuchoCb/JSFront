@@ -67,12 +67,13 @@ function mostrarArrays() {
       console.log(productsLS[1][0].nombre);
   // Recorre el array final y crea un elemento li por cada array
   
-    for(let i = 0; i < productsLS.length; i++) {
+    for (let i = 0; i < productsLS.length; i++) {
       for(let j = 0; j < productsLS[i].length; j++) {
         const arrayLi = document.createElement("li");
     arrayLi.innerHTML = "Caja " + [i] + " " + productsLS[i][j].nombre;
     lista.append(arrayLi);
-        
+        console.log (i)
+        console.log (productsLS.length)
         // Acá trabajas con los elementos de tu array interno
         
     }

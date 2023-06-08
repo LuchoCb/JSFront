@@ -1,7 +1,8 @@
 // CREANDOlos array para almacenar cajas y productos .
 
+
 let box = [];
-let boxClose = [];
+let boxClose =JSON.parse( localStorage.getItem('Caja')) || []; 
 let lista = document.querySelector ("#lista")
 lista.innerHTML = "";
 
@@ -49,11 +50,10 @@ cajaCerrada.addEventListener("click", ()=> { // Función para cerrar la caja y a
     icon: 'success',
     title: 'Caja Cerrada',
     text: '¡Productos agregados con éxito!',
-  })  
+  })
   boxClose.push(box);   // Agrega el array box al array boxClose
   box = [];               // Crea un nuevo array box vacío
-  console.log(boxClose);// Muestra el array con las cajas cerradas en la consola
-  let i = boxClose.length  
+  console.log(boxClose);// Muestra el array con las cajas cerradas en la consola 
   localStorage.setItem ("Caja", JSON.stringify(boxClose))
       
 })
@@ -62,13 +62,23 @@ function mostrarArrays() {
 
 const productsLS = JSON.parse (localStorage.getItem ("Caja"));
 
+
 if (productsLS) {
-  
+  lista.innerHTML = ""
   for(let i = 0; i < productsLS.length; i++) {
-    for(let j = 0; j < productsLS[i].length; j++) {
     const arrayLi = document.createElement("li");
+    arrayLi.innerHTML = "Caja " + [i]
+    lista.append(arrayLi);
+    const ul = document.createElement("ul");
+    lista.append(ul);
+    for(let j = 0; j < productsLS[i].length; j++) {
+      const li = document.createElement("li");
+      li.innerHTML = productsLS[i][j].nombre;
+      ul.append(li);
+/*     const arrayLi = document.createElement("li");
  arrayLi.innerHTML = "Caja " + [i] + " " + productsLS[i][j].nombre;
- lista.append(arrayLi);
+
+ lista.append(arrayLi); */
  console.log (i)
  console.log (productsLS.length)
 
@@ -99,7 +109,21 @@ if (productsLS) {
 }
 
 
-
+if (productsLS) {
+  lista.innerHTML = "";
+  for (let i = 0; i < productsLS.length; i++) {
+    const arrayLi = document.createElement("li");
+    arrayLi.innerHTML = "Caja " + [i]
+    lista.append(arrayLi);
+    const ul = document.createElement("ul");
+    lista.append(ul);
+    for (let j = 0; j < productsLS[i].length; j++) {
+      const li = document.createElement("li");
+      li.innerHTML = productsLS[i][j].nombre;
+      ul.append(li);
+    }
+  }
+}
 
  
 

@@ -36,12 +36,20 @@ jQuery(document).ready(function(){
 let userProduct = document.getElementById("AddButton");
 userProduct.addEventListener("click", ()=> { // Función para agregar y mostrar los productos en la caja
   const nombre = document.getElementById('SearchBox').value;
-  document.getElementById('SearchBox').value = "";
+  
+  if (nombre === Number) {
+    alert("Debes agregar un articulo");
+  } else if (nombre === "" ) {
+    alert("el articulo no puede ser un numeroo");
+  }  else {
+  /* document.getElementById('SearchBox').value = ""; */
   box.push({nombre: nombre});  // Agrega un objeto con el nombre ingresado por el usuario
   alert("articulo agregado a la caja");
   console.log(` Articulos en caja : ${box.length} `);
   console.log(box);            // Muestra el array con los elementos ingresados por el usuario
 
+}
+  
 });
 
 let cajaCerrada = document.getElementById("CloseButton");
@@ -60,7 +68,7 @@ cajaCerrada.addEventListener("click", ()=> { // Función para cerrar la caja y a
 
 function mostrarArrays() {
 
-const productsLS = JSON.parse (localStorage.getItem ("Caja"));
+let productsLS = JSON.parse (localStorage.getItem ("Caja"));
 
 
 if (productsLS) {
@@ -100,32 +108,7 @@ if (productsLS) {
 }
 
 
-
-
-  
-
-
-
-}
-
-
-if (productsLS) {
-  lista.innerHTML = "";
-  for (let i = 0; i < productsLS.length; i++) {
-    const arrayLi = document.createElement("li");
-    arrayLi.innerHTML = "Caja " + [i]
-    lista.append(arrayLi);
-    const ul = document.createElement("ul");
-    lista.append(ul);
-    for (let j = 0; j < productsLS[i].length; j++) {
-      const li = document.createElement("li");
-      li.innerHTML = productsLS[i][j].nombre;
-      ul.append(li);
-    }
-  }
-}
-
- 
+} 
 
 function generarQR() {
   // Limpia el div de los códigos QR antes de agregar nuevos elementos

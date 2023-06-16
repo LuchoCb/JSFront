@@ -5,6 +5,7 @@ let box = [];
 let boxClose =JSON.parse( localStorage.getItem('Caja')) || []; 
 let lista = document.querySelector ("#lista")
 lista.innerHTML = "";
+const nombre = document.getElementById('SearchBox').value;
 
 
 // Creando el QR para generar producto
@@ -35,16 +36,21 @@ jQuery(document).ready(function(){
 
 let userProduct = document.getElementById("AddButton");
 userProduct.addEventListener("click", ()=> { // Función para agregar y mostrar los productos en la caja
-  const nombre = document.getElementById('SearchBox').value;
+const nombre = document.getElementById('SearchBox').value;
   
-  if (nombre === Number) {
+  if (nombre === "") {
     alert("Debes agregar un articulo");
-  } else if (nombre === "" ) {
-    alert("el articulo no puede ser un numeroo");
+    $("#SearchBox").focus();
+  } else if (!/^([a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s])+$/i.test(nombre)) {
+    alert("artiículo no válido");
+    document.getElementById('SearchBox').value = "";
+    $("#SearchBox").focus();
   }  else {
   /* document.getElementById('SearchBox').value = ""; */
   box.push({nombre: nombre});  // Agrega un objeto con el nombre ingresado por el usuario
   alert("articulo agregado a la caja");
+  document.getElementById('SearchBox').value = "";
+  $("#SearchBox").focus();
   console.log(` Articulos en caja : ${box.length} `);
   console.log(box);            // Muestra el array con los elementos ingresados por el usuario
 
@@ -54,15 +60,23 @@ userProduct.addEventListener("click", ()=> { // Función para agregar y mostrar 
 
 let cajaCerrada = document.getElementById("CloseButton");
 cajaCerrada.addEventListener("click", ()=> { // Función para cerrar la caja y abrir una nueva
-  Swal.fire({
-    icon: 'success',
-    title: 'Caja Cerrada',
-    text: '¡Productos agregados con éxito!',
-  })
-  boxClose.push(box);   // Agrega el array box al array boxClose
-  box = [];               // Crea un nuevo array box vacío
-  console.log(boxClose);// Muestra el array con las cajas cerradas en la consola 
-  localStorage.setItem ("Caja", JSON.stringify(boxClose))
+  if (box.length === 0) {
+    alert ("debes agregar un producto")
+    $("#SearchBox").focus();
+  } else {
+    Swal.fire({
+      icon: 'success',
+      title: 'Caja Cerrada',
+      text: '¡Productos agregados con éxito!',
+    })
+    boxClose.push(box);   // Agrega el array box al array boxClose
+    box = [];               // Crea un nuevo array box vacío
+    console.log(boxClose);// Muestra el array con las cajas cerradas en la consola 
+    localStorage.setItem ("Caja", JSON.stringify(boxClose))
+    $("#SearchBox").focus();
+  }
+  
+ 
       
 })
 
